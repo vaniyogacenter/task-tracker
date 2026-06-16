@@ -189,7 +189,7 @@ function initSpeechRecognition() {
                 elements.nlpBadgeTitle.textContent = parsed.title;
                 elements.nlpBadgeDate.textContent = parsed.date;
                 elements.nlpBadgeTime.textContent = parsed.time || 'No Time';
-                elements.nlpBadgeCat.textContent = parsed.category;
+                elements.nlpBadgeCat.value = parsed.category;
                 elements.voiceNlpFeedback.classList.add('show');
                 
                 if (finalTranscript) {
@@ -491,6 +491,31 @@ async function toggleTaskComplete(id, completed) {
     }
 }
 
+// Update task category with Auth header
+async function updateTaskCategory(id, category) {
+    if (!currentUser) return;
+    try {
+        const response = await fetch(`/api/tasks/${id}`, {
+            method: 'PUT',
+            headers: { 
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + currentUser.token
+            },
+            body: JSON.stringify({ category })
+        });
+        if (!response.ok) throw new Error('Failed to update task category');
+        
+        // Update local state
+        const idx = tasks.findIndex(t => t.id === id);
+        if (idx !== -1) {
+            tasks[idx].category = category;
+            renderAllViews();
+        }
+    } catch (error) {
+        console.error('Error updating task category:', error);
+    }
+}
+
 // Delete task with Auth header
 async function deleteTask(id) {
     if (!currentUser) return;
@@ -556,7 +581,7 @@ async function handleVoiceConfirmSubmit() {
         title: parsedVoiceTask.title,
         date: parsedVoiceTask.date,
         time: parsedVoiceTask.time,
-        category: parsedVoiceTask.category,
+        category: elements.nlpBadgeCat.value || parsedVoiceTask.category,
         completed: false,
         source: 'voice'
     });
@@ -785,7 +810,14 @@ function renderTaskListContainer(container, taskList, viewContextId) {
             <div class="task-details">
                 <span class="task-title">${task.title}</span>
                 <div class="task-meta">
-                    <span class="task-tag cat-${task.category.toLowerCase()}">${task.category}</span>
+                    <select class="task-tag-select cat-${task.category.toLowerCase()}" data-task-id="${task.id}">
+                        <option value="Inbox" ${task.category === 'Inbox' ? 'selected' : ''}>Inbox</option>
+                        <option value="Work" ${task.category === 'Work' ? 'selected' : ''}>Work</option>
+                        <option value="Personal" ${task.category === 'Personal' ? 'selected' : ''}>Personal</option>
+                        <option value="Shopping" ${task.category === 'Shopping' ? 'selected' : ''}>Shopping</option>
+                        <option value="Finance" ${task.category === 'Finance' ? 'selected' : ''}>Finance</option>
+                        <option value="Health" ${task.category === 'Health' ? 'selected' : ''}>Health</option>
+                    </select>
                     <span class="task-date">
                         <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <rect width="18" height="18" x="3" y="4" rx="2" ry="2"/>
@@ -828,6 +860,13 @@ function renderTaskListContainer(container, taskList, viewContextId) {
             const btn = e.target.closest('.delete-btn');
             const taskId = btn.getAttribute('data-task-id');
             deleteTask(taskId);
+        });
+
+        const tagSelect = item.querySelector('.task-tag-select');
+        tagSelect.addEventListener('change', (e) => {
+            const id = e.target.getAttribute('data-task-id');
+            const category = e.target.value;
+            updateTaskCategory(id, category);
         });
 
         container.appendChild(item);

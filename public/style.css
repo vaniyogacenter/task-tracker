@@ -822,6 +822,47 @@ body {
 .task-tag.cat-personal { color: var(--cat-personal); background: rgba(139, 92, 246, 0.1); }
 .task-tag.cat-inbox { color: var(--cat-inbox); background: rgba(148, 163, 184, 0.1); }
 
+.task-tag-select {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.65rem;
+    letter-spacing: 0.02em;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    outline: none;
+    transition: all 0.2s;
+    appearance: none;
+    -webkit-appearance: none;
+    text-transform: uppercase;
+}
+
+.task-tag-select:hover {
+    filter: brightness(1.15);
+}
+
+.task-tag-select.cat-finance { color: var(--cat-finance); background: rgba(245, 158, 11, 0.15); }
+.task-tag-select.cat-shopping { color: var(--cat-shopping); background: rgba(20, 184, 166, 0.15); }
+.task-tag-select.cat-health { color: var(--cat-health); background: rgba(16, 185, 205, 0.15); }
+.task-tag-select.cat-work { color: var(--cat-work); background: rgba(99, 102, 241, 0.15); }
+.task-tag-select.cat-personal { color: var(--cat-personal); background: rgba(139, 92, 246, 0.15); }
+.task-tag-select.cat-inbox { color: var(--cat-inbox); background: rgba(148, 163, 184, 0.15); }
+
+.task-tag-select option {
+    background: #121026;
+    color: #fff;
+    font-size: 0.85rem;
+    padding: 6px;
+    text-transform: none;
+}
+
+body.light-theme .task-tag-select option {
+    background: #ffffff;
+    color: #0f172a;
+}
+
 .task-source-badge {
     display: flex;
     align-items: center;
@@ -1067,6 +1108,42 @@ body {
     padding: 4px 10px;
     border-radius: 6px;
     font-weight: 600;
+}
+
+.nlp-badge-select {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    outline: none;
+    transition: all 0.2s;
+}
+
+.nlp-badge-select:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.nlp-badge-select option {
+    background: #121026;
+    color: #fff;
+    font-size: 0.85rem;
+}
+
+body.light-theme .nlp-badge-select {
+    background: rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    color: var(--text-primary);
+}
+
+body.light-theme .nlp-badge-select option {
+    background: #ffffff;
+    color: #0f172a;
 }
 
 .voice-control-actions {

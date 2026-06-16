@@ -4,11 +4,11 @@
  */
 
 const CATEGORIES = {
-    Finance: ['rupees', 'rs', 'bill', 'debt', 'payment', 'bank', 'atm', 'cash', 'pay'],
-    Shopping: ['groceries', 'buy', 'market', 'store', 'shopping', 'milk', 'eggs', 'food', 'purchase'],
-    Health: ['scan', 'doctor', 'gym', 'workout', 'medicine', 'clean', 'cleanup', 'dentist', 'health'],
-    Work: ['report', 'president', 'vp', 'meeting', 'boss', 'email', 'office', 'presentation', 'submit', 'send reports'],
-    Personal: ['hair', 'haircut', 'movie', 'tickets', 'weekend', 'clothes', 'iron', 'lunch', 'dinner', 'tickets', 'book']
+    Finance: ['rupees', 'rs', 'bill', 'debt', 'payment', 'bank', 'atm', 'cash', 'pay', 'salary', 'invoice', 'rent', 'deposit', 'tax', 'card', 'credit', 'debit', 'money', 'expense', 'insurance', 'fund', 'wallet'],
+    Shopping: ['groceries', 'buy', 'market', 'store', 'shopping', 'milk', 'eggs', 'food', 'purchase', 'shop', 'order', 'grocer', 'supermarket', 'mall', 'vegetables', 'fruits', 'grocery'],
+    Health: ['scan', 'doctor', 'gym', 'workout', 'medicine', 'clean', 'cleanup', 'dentist', 'health', 'yoga', 'aerobic', 'aerobics', 'exercise', 'walk', 'run', 'running', 'jog', 'jogging', 'fitness', 'clinic', 'hospital', 'medical', 'pill', 'pills', 'prescription', 'appointment', 'physio', 'therapy', 'sick', 'ill', 'pain', 'cough', 'cold', 'fever', 'dentistry', 'cardiologist', 'diet', 'nutrition', 'physiotherapy'],
+    Work: ['report', 'president', 'vp', 'meeting', 'boss', 'email', 'office', 'presentation', 'submit', 'send reports', 'work', 'project', 'client', 'team', 'manager', 'task', 'call', 'review', 'code', 'develop', 'schedule', 'interview', 'agenda', 'deadline'],
+    Personal: ['hair', 'haircut', 'movie', 'tickets', 'weekend', 'clothes', 'iron', 'lunch', 'dinner', 'tickets', 'book', 'personal', 'laundry', 'clean room', 'watch', 'read', 'party', 'friend', 'friends', 'family', 'gift', 'birthday', 'anniversary', 'wish', 'call mom', 'call dad', 'holiday', 'trip', 'travel']
 };
 
 /**
