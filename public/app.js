@@ -80,6 +80,11 @@ const elements = {
 
 // Initialize Application
 document.addEventListener('DOMContentLoaded', () => {
+    // Load theme preference
+    const cachedTheme = localStorage.getItem('theme');
+    if (cachedTheme === 'light') {
+        document.body.classList.add('light-theme');
+    }
     checkAuthentication();
     initSpeechRecognition();
     setupEventListeners();
@@ -225,6 +230,16 @@ function stopAudioRecordingUI() {
 
 // Global Event Listeners
 function setupEventListeners() {
+    // Theme Toggle Button Event
+    const btnThemeToggle = document.getElementById('btn-theme-toggle');
+    if (btnThemeToggle) {
+        btnThemeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('light-theme');
+            const isLight = document.body.classList.contains('light-theme');
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        });
+    }
+
     // Login Submit Form
     elements.loginForm.addEventListener('submit', handleLoginSubmit);
 
