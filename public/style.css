@@ -376,6 +376,8 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 28px;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .column-card {
@@ -385,7 +387,7 @@ body {
     padding: 24px;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    min-height: 400px;
+    min-height: 350px;
     display: flex;
     flex-direction: column;
 }
@@ -418,8 +420,10 @@ body {
 /* WEEK VIEW LAYOUT: 7 horizontal rows or grid cards */
 .week-view-layout {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
 .week-day-card {
@@ -427,10 +431,21 @@ body {
     border: 1px solid var(--card-border);
     border-radius: var(--radius-md);
     padding: 18px;
-    min-height: 200px;
+    min-height: 160px;
     display: flex;
     flex-direction: column;
     transition: border-color 0.3s;
+}
+
+.week-day-card .empty-state {
+    padding: 15px 0;
+    gap: 6px;
+    font-size: 0.8rem;
+}
+
+.week-day-card .empty-state svg {
+    width: 18px;
+    height: 18px;
 }
 
 .week-day-card.today {
@@ -1159,6 +1174,10 @@ body {
         grid-template-columns: 1fr;
         gap: 24px;
     }
+    .column-card {
+        min-height: 280px;
+        padding: 20px;
+    }
     .main-content {
         padding: 30px 40px;
     }
@@ -1229,6 +1248,68 @@ body {
     
     .task-actions {
         opacity: 1; /* Always show action buttons on tap devices */
+    }
+
+    /* Mobile optimizations for Day View */
+    .day-view-layout {
+        gap: 16px;
+    }
+    
+    .column-card {
+        min-height: 200px;
+        padding: 16px;
+        border-radius: var(--radius-md);
+    }
+    
+    .column-header {
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+    }
+
+    .column-header h2 {
+        font-size: 1.1rem;
+    }
+
+    .column-card .empty-state {
+        padding: 20px 0;
+        gap: 8px;
+    }
+
+    /* Mobile optimizations for Week View */
+    .week-view-layout {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .week-day-card {
+        min-height: 100px;
+        padding: 12px 14px;
+        border-radius: var(--radius-sm);
+    }
+
+    .week-day-header {
+        margin-bottom: 8px;
+        padding-bottom: 4px;
+    }
+
+    .week-day-header h3 {
+        font-size: 0.9rem;
+    }
+
+    .week-day-card .empty-state {
+        padding: 10px 0;
+        gap: 4px;
+        font-size: 0.75rem;
+    }
+    
+    .week-day-card .empty-state svg {
+        width: 14px;
+        height: 14px;
+    }
+    
+    .task-item {
+        padding: 10px 14px;
+        gap: 10px;
     }
 }
 
