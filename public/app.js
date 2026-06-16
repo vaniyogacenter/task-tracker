@@ -262,7 +262,7 @@ function setupEventListeners() {
         document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
         pill.classList.add('active');
         activeCategory = pill.getAttribute('data-category');
-        renderTasks();
+        renderAllViews();
     });
 
     // Submit via manual input
@@ -568,8 +568,8 @@ async function handleVoiceConfirmSubmit() {
 
 // Helper to filter tasks by category
 function filterTasksByCategory(taskList) {
-    if (activeCategory === 'All') return taskList;
-    return taskList.filter(t => t.category === activeCategory);
+    if (!activeCategory || activeCategory === 'All') return taskList;
+    return taskList.filter(t => t.category && t.category.toLowerCase() === activeCategory.toLowerCase());
 }
 
 // Renders everything based on updated state
