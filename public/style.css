@@ -465,6 +465,8 @@ body {
     padding: 28px;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .month-selector {
@@ -515,7 +517,7 @@ body {
 }
 
 .calendar-day {
-    aspect-ratio: 1.2;
+    aspect-ratio: 1.5;
     background: rgba(255, 255, 255, 0.01);
     border: 1px solid rgba(255, 255, 255, 0.02);
     border-radius: var(--radius-sm);
@@ -523,7 +525,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 70px;
+    min-height: 55px;
     cursor: pointer;
     transition: all 0.2s;
 }
@@ -1177,7 +1179,7 @@ body {
     
     .main-content {
         margin-left: 0; /* Reset margins */
-        padding: 20px 20px 140px 20px; /* Space for bottom console & bottom nav */
+        padding: 16px 16px 160px 16px; /* Space for bottom console & bottom nav */
     }
     
     .dashboard-header {
@@ -1216,9 +1218,9 @@ body {
     }
     
     .calendar-day {
-        min-height: 55px;
+        min-height: 40px;
         aspect-ratio: 1;
-        padding: 4px;
+        padding: 2px 4px;
     }
     
     .day-number {
